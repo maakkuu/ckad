@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica-set-test
+  labels:
+    app: replicat-set-test
+spec:
+  template:
+    metadata:
+      name: nginx-replica-set-test
+      labels:
+        app: nginx-replica-set-test
+    spec:
+      containers:
+        - image: nginx
+          name: nginx-replica-set-test-pod
+  selector:
+    matchLabels:
+      app: nginx-replica-set-test
+  replicas: 4
+
